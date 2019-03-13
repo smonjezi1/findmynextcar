@@ -47,9 +47,11 @@ def car_recom(years_to_keep,budget,annual_mileage,tol):
     return possible_cars3.sort_values(['estimated total loss after '+str(years_to_keep)+' years (USD)'], ascending=[1]).reset_index(drop=True)
 
 
+
 @app.route('/')
 def main():
     return redirect('/index')
+
 
 @app.route('/index', methods=['GET','POST'])
 def index():
@@ -75,6 +77,10 @@ def index():
             'index.html',
             script_1="",
             script_2=table_script)
+
+@app.route('/about')
+def about():
+  return render_template('about.html')
 
 if __name__ == '__main__':
 #    app.run(host='0.0.0.0')
