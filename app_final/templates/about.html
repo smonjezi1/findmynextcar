@@ -1,0 +1,38 @@
+<div class="col-xs-12   border-class custom-form-class form-bg-default border-color-default phone-help-text-color-default border-width-1 bg-color-white  font-color-default  artlpage">
+		<div class="page-heading">
+		<h1 class=" responsiveheadingtxt  font-color-default ">
+Buying a Used Car Using Data Scinece</h1>
+</div>
+		<div class="row  font-color-default">
+		<div class="col-md-7 artlcontnt">
+						<span class="pressTitle">
+						<strong>13 March 2019</strong></span><p class="  font-color-default "></p><p><span lang="EN-GB"><img src="https://data-science-blog.com/wp-content/uploads/2017/03/big-data-automotive-industry-header-1.jpg" alt="" border="0" class="img-responsive" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;"></span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">The goal of this project is to employ Data Science to build and deploy a Machine Learning Model that can predict a car price, and ultimately suggest buyers a list of best value 
+used cars they can buy.</span></p>
+
+<p><span lang="EN-GB" style="font-size: 12pt; font-weight: bold;">Data Scraping</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Retrieving Data is the important step that should be done in the fastest possible way. For this purpose “BeautifulSoup” was used to scrape information of the listed cars on 
+<a href="https://www.craigslist.org/">craigslist.org</a>. The process for this task is quite simple, first we loop over the ads pages in order to collect the ads URLs by incrementing the page number parameter called oin 
+the base URL.
+Once the URLs is collected, data about the car posted in that ad, such as : ‘Model Year’, ‘Make’, ‘Model’,‘Mileage’, ‘Price’ …, are stored in a SQL database.
+The next step is the most time consuming in every Data Science process which is Data Preprocessing & Cleansing. Information about 2 Million cars were scraped initially, which around 800,000 healthy pages were retreieved from.
+</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Armed with
+this information, you can make the necessary changes to your inventory. For example, only cars with a "clean" title were used in the modeling step. </span></p>
+<p><span lang="EN-GB" style="font-size: 12pt; font-weight: bold;">Price Prediction</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Now we came to the main task in all this process, which is Data Modeling, for this purpose a Multi-layer Perceptron (MLP) regressor Machine Learning models dedicated 
+for Regression problem. r2_score for out-of-sample testing was 0.88.</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">The price prediction model is trained on various fetures: ‘Model Year’, ‘Make’, ‘Model’,‘Mileage’. The corrolation matrix suggested that,‘Model Year’, not surprisingly,
+has the most contribution to the price prediction. <span style="font-style: italic;">StandardScalar</span> was used to normalize ‘Model Year’ and ‘Mileage’. In order to make rest of the features numerical, so that 
+they will fit into our model, <span style="font-style: italic;">OneHotEncoder</span> categorical variable transformation was used.</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Usually we split our data into three parts : Training , validation and Testing set, but for simplicity we will use only train and test with 20% in test size, 
+and the rest for training.</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt; font-weight: bold;">Optimization</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Once we are done with price prediction, now it is time to decide which used cars are best to buy. In order to do that, the optimizer gets various parameter from the user.
+First, the avaiable budget and, second, a price margin that defines a range. The model creates a list of all possible selection of used cars using this information. Third and forth are the number miles that the buyers plan to drive 
+the car annually and the number of years that the car is planned to be kept. These parameters help to determine the total cost of keeping the car. Value loss, maitainance costs and repair costs, all contribute to the
+total cost.</span></p>
+<p><span lang="EN-GB" style="font-size: 12pt;">Finally, total cost of keeping the assiciated with each car in the selection of possible cars in the price range will be predicted and given as a sortable list to the user.</span></p>
+				</div>
+		</div>
+		</div>
